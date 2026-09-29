@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copywriting &amp; Hook</title>
+
+<style data-hatch-notebook-brief-css="true">
+/*
+Muse goal briefing letter stylesheet.
+
+This is the canonical base stylesheet for Figma-aligned Muse Letter goal briefs.
+The brief finalizer inlines this file into the final HTML artifact, so
+brief authors should not paste, copy, link, rewrite, minify, or summarize this
+stylesheet in individual briefs.
+
+Use this as the shared base for goal briefs. Brief-specific CSS may add
+content-only treatments, but should not redefine the root Muse Letter tokens or
+replace the core sheet, article, masthead, figure, and content-detail styles
+below.
+
+------------------------------------------------------------------------------
+MUSE LETTER LAYER
+A full-page warm paper letter matching the Figma "v0 Letter Tweaks" direction:
+centered small date, large orange handwritten title, compact editorial body,
+and rounded white-framed images.
+------------------------------------------------------------------------------
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Caveat:wght@400;500;600;700&family=Oooh+Baby&family=Tenor+Sans&display=swap");
+
+:root {
+  --paper: #f1e7da;
+  --paper-card: #ffffff;
+  --card: #fff9f4;
+  --ink: #23221f;
+  --ink-soft: #6f6555;
+  --ink-faint: rgba(35, 34, 31, 0.48);
+  --accent: #a13f04;
+  --accent-deep: #7a3303;
+  --accent-2: #6f6555;
+  --highlight: #ffe3c0;
+  --highlight-2: #efd0c0;
+  --line: #e3d6c1;
+
+  --body: 1.1875rem;       /* Figma body: 19px */
+  --lead: clamp(1.5rem, 2.25vw, 1.6875rem); /* Figma lead: 24px mobile, 27px web */
+  --lead-leading: clamp(2rem, 3.333vw, 2.5rem); /* Figma lead: 32px mobile, 40px web */
+  --h1: clamp(4rem, 8vw, 6rem); /* Figma title range: 64px mobile, 96px web */
+  --h2: clamp(2.125rem, 5vw, 2.375rem); /* Figma heading: 34px mobile, 38px web */
+  --h3: clamp(1.25rem, 3.2vw, 1.35rem);
+  --caption: 1.25rem;      /* Figma caption: 20px */
+  --signature: 2.375rem;   /* Figma bottom signature: 38px */
+  --signature-leading: 1.210526; /* Figma bottom signature: 46px */
+  --list: clamp(1.0625rem, 1.667vw, 1.25rem); /* Figma list: 17px mobile, 20px web */
+  --list-leading: clamp(1.9125rem, 3.333vw, 2.5rem); /* Figma list: 30.6px mobile, 40px web */
+  --measure: 680px;        /* Figma text column */
+  --media-width: 760px;    /* Figma image frame */
+  --page-gutter: 16px;     /* Figma mobile side padding / minimum gutter */
+  --leading: 1.5;          /* 19px / 28.5px */
+
+  --radius: 16px;
+  --card-radius: 32px;
+  --image-radius: 30px;
+  --gap: 1.75rem;          /* Figma web column gap: 28px */
+  --mobile-gap: 1.5rem;    /* Figma mobile column gap: 24px */
+  --raised:
+    0 2px 2px rgba(111, 101, 85, 0.1),
+    0 8px 24px rgba(111, 101, 85, 0.1);
+
+  --c1: var(--accent);
+  --c2: #d6a56d;
+  --c3: #d8b7a6;
+  --c4: #8c8f77;
+  --c5: #6f6555;
+  --grid: var(--line);
+  --axis: var(--ink-faint);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Alegreya", Georgia, serif;
+  font-size: var(--body);
+  line-height: var(--leading);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body:has(.sheet) {
+  background-color: var(--paper);
+  padding: 0;
+}
+
+.sheet {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  max-width: none;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--paper);
+}
+
+.sheet::after {
+  content: none;
+}
+
+.article {
+  margin: 0 auto;
+  max-width: var(--measure);
+  padding: 110px 0 110px;
+  width: calc(100% - var(--page-gutter) - var(--page-gutter));
+}
+
+:where(.article) p {
+  margin: 0 0 var(--gap);
+}
+
+.article > p + p {
+  text-indent: 0;
+}
+
+.dateline {
+  color: var(--ink);
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 0.7;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  transform: none;
+}
+
+.title {
+  color: var(--accent);
+  font-family: "Caveat", cursive;
+  font-size: var(--h1);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.95;
+  margin: 0 auto 1.75rem;
+  max-width: var(--measure);
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+.wave-rule {
+  display: none;
+}
+
+.byline {
+  color: var(--accent);
+  font-family: "Oooh Baby", "Caveat", cursive;
+  font-size: var(--signature);
+  line-height: var(--signature-leading);
+  margin: 1.4rem 0 1.8rem;
+  text-align: left;
+  transform: none;
+}
+
+.lead {
+  color: var(--ink);
+  font-size: var(--lead);
+  font-weight: 600;
+  line-height: var(--lead-leading);
+}
+
+.lead::first-letter {
+  color: inherit;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+.article h2 {
+  color: var(--ink);
+  font-family: "Tenor Sans", Georgia, serif;
+  font-size: var(--h2);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.21;
+  margin: 1.8rem 0 0.8rem;
+}
+
+.article h2::before {
+  content: none;
+}
+
+.article h3,
+.chart__title {
+  color: var(--ink);
+  font-family: "Tenor Sans", Georgia, serif;
+  font-size: var(--h3);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 1.9rem 0 0.6rem;
+}
+
+.article a {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-position: 0 1.05em;
+  background-repeat: repeat-x;
+  background-size: 6px 2px;
+  color: var(--accent-deep);
+  padding-bottom: 0.04em;
+  text-decoration: none;
+  transition:
+    color 0.2s,
+    background-size 0.2s;
+}
+
+.article a:hover {
+  background-size: 6px 3px;
+  color: var(--accent);
+}
+
+mark,
+.hl {
+  background: linear-gradient(
+    104deg,
+    transparent 0.5%,
+    var(--highlight) 0.5%,
+    var(--highlight) 96%,
+    transparent 96%
+  );
+  border-radius: 1px;
+  box-decoration-break: clone;
+  color: inherit;
+  margin: 0 -0.05em;
+  padding: 0.05em 0.15em;
+  -webkit-box-decoration-break: clone;
+}
+
+.hl--mint {
+  background-image: linear-gradient(
+    104deg,
+    transparent 0.5%,
+    var(--highlight-2) 0.5%,
+    var(--highlight-2) 96%,
+    transparent 96%
+  );
+}
+
+/* Hand-made layer (added): angle variants so no two swipes look identical. */
+.hl--a {
+  background-image: linear-gradient(
+    99deg,
+    transparent 1%,
+    var(--highlight) 1%,
+    var(--highlight) 94%,
+    transparent 97%
+  );
+}
+
+.hl--b {
+  background-image: linear-gradient(
+    108deg,
+    transparent 0%,
+    var(--highlight-2) 2%,
+    var(--highlight-2) 97%,
+    transparent 99%
+  );
+}
+
+/* Hand-made layer (added): a hand-drawn underline drawn behind a phrase.
+   Wrap the phrase in <span class="scribble">…<svg>…</svg></span>; the inline
+   SVG path carries filter="url(#ink-rough-2)". */
+.scribble {
+  position: relative;
+  white-space: nowrap;
+}
+
+.scribble svg {
+  position: absolute;
+  left: -0.05em;
+  right: -0.05em;
+  bottom: -0.32em;
+  width: 104%;
+  height: 0.55em;
+  overflow: visible;
+}
+
+.pullquote {
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 28px -22px rgba(35, 34, 31, 0.28);
+  color: var(--ink);
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  line-height: 1.25;
+  margin: 1.7rem 0;
+  padding: 1rem 1.2rem;
+  position: relative;
+  transform: none;
+}
+
+.pullquote:nth-of-type(even) {
+  transform: none;
+}
+
+.pullquote::before {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 2px;
+  content: "";
+  height: 20px;
+  left: 50%;
+  position: absolute;
+  top: -10px;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 82px;
+}
+
+.note {
+  color: var(--accent-2);
+  font-family: "Caveat", cursive;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 1.8rem 0;
+  padding: 0.2rem 0 0.2rem 1.3rem;
+}
+
+.article ul {
+  list-style: disc;
+  margin: 0 0 var(--gap);
+  padding-left: 1.4rem;
+}
+
+.article ul li {
+  font-size: var(--list);
+  line-height: var(--list-leading);
+  margin: 0;
+  padding-left: 0.1rem;
+}
+
+.article ul li::marker {
+  color: var(--accent);
+  font-size: 0.85em;
+}
+
+.divider {
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='16' viewBox='0 0 180 16'%3E%3Cpath d='M3 8q11-6 22 0t22 0 22 0 22 0 22 0 22 0 22 0' fill='none' stroke='%236F6555' stroke-width='2' stroke-linecap='round' opacity='.62'/%3E%3C/svg%3E");
+  border: 0;
+  height: 16px;
+  margin: 2rem auto;
+  width: 180px;
+}
+
+figure,
+.figure,
+.chart,
+.stat {
+  margin: 0 0 var(--gap);
+}
+
+figcaption {
+  color: var(--ink);
+  font-family: "Caveat", cursive;
+  font-size: var(--caption);
+  line-height: 1;
+  margin-top: 0.45rem;
+  text-align: center;
+  transform: rotate(1deg);
+}
+
+figure,
+.figure {
+  margin-left: 50%;
+  max-width: calc(100vw - var(--page-gutter) - var(--page-gutter));
+  padding: 1.5rem 0;
+  transform: translateX(-50%);
+  width: var(--media-width);
+}
+
+figure > img,
+.figure img {
+  background: var(--paper-card);
+  border: 6px solid #ffffff;
+  border-radius: var(--image-radius);
+  box-shadow: var(--raised);
+  display: block;
+  height: auto;
+  transform: rotate(1deg);
+  width: 100%;
+}
+
+.figure--taped {
+  position: relative;
+}
+
+.figure--taped img {
+  transform: rotate(1deg);
+}
+
+.figure--taped::before {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 2px;
+  content: "";
+  height: 30px;
+  left: 18%;
+  position: absolute;
+  top: 1.5rem;
+  transform: translateY(-50%) rotate(-4deg);
+  width: 88px;
+  z-index: 2;
+}
+
+.gallery {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 2.2rem 0;
+}
+
+.gallery img {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.gallery img:nth-child(odd) {
+  transform: rotate(-0.8deg);
+}
+
+.gallery img:nth-child(even) {
+  transform: rotate(0.8deg);
+}
+
+.chart svg {
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+
+.chart__title {
+  margin: 0 0 0.6rem;
+}
+
+.chart__val {
+  fill: var(--ink);
+  font-family: "Caveat", cursive;
+  font-size: 15px;
+}
+
+.chart__cat {
+  fill: var(--axis);
+  font-family: "Alegreya", serif;
+  font-size: 11px;
+}
+
+.chart__note {
+  fill: var(--accent-2);
+  font-family: "Caveat", cursive;
+  font-size: 14px;
+}
+
+.article table {
+  border-collapse: collapse;
+  font-size: 1.02rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.article th {
+  border-bottom: 2px solid var(--accent);
+  font-family: "Tenor Sans", Georgia, serif;
+  font-weight: 600;
+  padding: 0.55rem 0.6rem;
+  text-align: left;
+}
+
+.article td {
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  padding: 0.55rem 0.6rem;
+}
+
+.article tr:last-child td {
+  border-bottom: 0;
+}
+
+.article tbody tr:hover td {
+  background: rgba(255, 227, 192, 0.24);
+}
+
+.article td.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.stat {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 22ch;
+  text-align: center;
+}
+
+.stat__num {
+  color: var(--accent);
+  font-family: "Tenor Sans", Georgia, serif;
+  font-size: 3.4rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.stat__label {
+  color: var(--ink-soft);
+  display: block;
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  margin-top: 0.3rem;
+}
+
+.stamp {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .note {
+    clear: right;
+    float: right;
+    margin: 0.2rem -190px 0.8rem 1rem;
+    width: 160px;
+  }
+
+  .note:nth-of-type(3n) {
+    transform: none;
+  }
+
+  .note:nth-of-type(3n + 1) {
+    transform: none;
+  }
+
+  .note:nth-of-type(3n + 2) {
+    transform: none;
+  }
+
+  .note::before {
+    content: "\21B3 ";
+  }
+
+  .figure--wide {
+    margin-left: 50%;
+    width: var(--media-width);
+  }
+}
+
+@media (max-width: 1099px) {
+  .note {
+    border-left: 3px dotted var(--accent-2);
+    display: block;
+    margin: 1rem 0;
+    padding-left: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --body: 1.0625rem; /* Figma mobile body: 17px */
+    --leading: 1.411765; /* Figma mobile body: 24px */
+    --gap: var(--mobile-gap);
+    --image-radius: 16px;
+  }
+
+  .article {
+    max-width: none;
+    padding: 48px 0;
+  }
+
+  .dateline {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    max-width: none;
+    width: 100%;
+  }
+
+  figure,
+  .figure {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  figure > img,
+  .figure img {
+    border-width: 6px;
+    border-radius: var(--image-radius);
+  }
+
+}
+</style>
+
+</head>
+<body>
+  <main class="sheet">
+    <article class="article">
+      <p class="dateline">29 September 2026</p>
+      <h1 class="title">Copywriting &amp; Hook</h1>
+      <p class="lead">Gue mau jujur dulu soal satu hal: orang nggak baca tulisanmu. Mereka <em>scan</em>. Jarinya udah siap scroll sebelum matanya selesai baca baris pertama. Satu-satunya hal yang bisa bikin mereka berhenti adalah <mark>kalimat pertamamu</mark> — dan kalimat pertama itulah yang namanya hook.</p>
+
+      <p>Playbook ini gue tulis karena hook adalah skill yang paling murah buat dipelajari tapi paling mahal dampaknya. Buat Threads @jstky.la, buat caption TikTok, buat jualan di RacunKit — polanya sama semua. Kuasain ini sekali, kepake di mana-mana.</p>
+
+      <h2>Kenapa hook = segalanya</h2>
+      <p>Di Threads, yang tampil cuma 1&ndash;2 baris pertama. Sisanya ketutup tombol &ldquo;selengkapnya&rdquo; &mdash; dan hampir nggak ada yang nge-tap kalau dua baris itu hambar. Di TikTok, caption juga kepotong; baris pertamanya yang nongol sebelum &ldquo;...more&rdquo;. Di RacunKit, di antara puluhan kartu produk, kalimat pertama yang menentukan diklik atau dilewat.</p>
+      <p>Otak manusia mutusin dalam sekitar 3 detik: lanjut atau lewat. Hook yang bagus bikin otak bilang, &ldquo;eh, bentar.&rdquo; Hook yang jelek bikin jempol lanjut scroll tanpa mikir. Sesederhana itu, dan sekejam itu.</p>
+
+      <aside class="pullquote">Orang nggak baca tulisanmu. Mereka scan. Hook adalah satu-satunya alasan mereka berhenti.</aside>
+
+      <h2>6 formula hook yang bisa langsung dipake</h2>
+      <p>Formula di bawah ini pola, bukan template kaku. Jangan dihafal kata per kata &mdash; pahami polanya, terus isi dengan pengalaman dan bahasamu sendiri. Semua contoh pakai gaya @jstky.la: santai, nyindir diri sendiri, nggak jaim.</p>
+
+      <h3>1. Jurang penasaran (curiosity gap)</h3>
+      <p>Kasih setengah info, simpan setengahnya. Otak manusia benci rasa penasaran yang nggak kelar &mdash; dia bakal baca lanjut cuma buat nutup rasa itu.</p>
+      <ul>
+        <li>&ldquo;Gue baru sadar kenapa dompet selalu kosong tiap tanggal 20. Dan penyebabnya bukan jajan.&rdquo;</li>
+        <li>&ldquo;Ada satu kebiasaan kecil yang bikin tagihan listrik gue turun 40%. Bukan matiin AC.&rdquo;</li>
+      </ul>
+      <p class="note">Hati-hati: ini formula yang paling gampang kebablasan jadi clickbait zonk. Aturannya ada di bawah.</p>
+
+      <h3>2. Pernyataan kontra</h3>
+      <p>Ngomong kebalikan dari yang orang percaya. Otak langsung protes &mdash; &ldquo;hah, masa sih?&rdquo; &mdash; dan protes itu adalah perhatian.</p>
+      <ul>
+        <li>&ldquo;Berhenti nabung. Serius, buat kebanyakan orang nabung itu strategi yang kalah.&rdquo;</li>
+        <li>&ldquo;Lu nggak butuh motivasi. Lu butuh sistem yang jalan walau lu lagi males.&rdquo;</li>
+      </ul>
+
+      <h3>3. Angka dan list</h3>
+      <p>Otak suka yang konkret dan bisa dihitung. Angka bikin janji terasa nyata dan gampang dicerna.</p>
+      <ul>
+        <li>&ldquo;3 barang di bawah 50 ribu yang bikin kosan berasa hotel.&rdquo;</li>
+        <li>&ldquo;5 menit, 1 aplikasi, pengeluaran ketahuan semua.&rdquo;</li>
+      </ul>
+
+      <h3>4. Pain yang relatable</h3>
+      <p>Tusuk hal yang semua orang rasain tapi jarang diomongin. Begitu kena, orang merasa &ldquo;anjir, ini gue banget&rdquo; &mdash; dan orang selalu berhenti buat baca tentang dirinya sendiri.</p>
+      <ul>
+        <li>&ldquo;POV: gajian hari ini, besok udah mikir makan apa.&rdquo;</li>
+        <li>&ldquo;Yang begadang bukan cuma nakes. Kita begadang scroll TikTok, dibayarnya pake nyesel.&rdquo;</li>
+      </ul>
+
+      <h3>5. Pertanyaan menusuk</h3>
+      <p>Pertanyaan yang bikin orang merasa ditanya langsung. Otak otomatis nyoba jawab &mdash; dan buat jawab, dia harus baca lanjut.</p>
+      <ul>
+        <li>&ldquo;Kapan terakhir kali lu beli sesuatu yang beneran kepake?&rdquo;</li>
+        <li>&ldquo;Jujur deh: lu kerja buat hidup, atau hidup buat kerja?&rdquo;</li>
+      </ul>
+
+      <h3>6. Larangan (&ldquo;jangan&rdquo;)</h3>
+      <p>Manusia penasaran sama yang dilarang. Kata &ldquo;jangan&rdquo; itu magnet &mdash; makin dilarang, makin pengen tahu.</p>
+      <ul>
+        <li>&ldquo;Jangan beli lampu ini kalau lu gampang baper.&rdquo;</li>
+        <li>&ldquo;Jangan baca thread ini kalau dompetmu lagi aman-aman aja.&rdquo;</li>
+      </ul>
+
+      <hr class="divider">
+
+      <h2>Aturan main biar nggak zonk</h2>
+      <p>Formula di atas itu senjata. Tapi senjata tanpa aturan main hasilnya malah nembak kaki sendiri. Tiga aturan ini yang bedain hook keren sama hook murahan:</p>
+
+      <p><strong>Satu ide, satu kalimat pembuka.</strong> Jangan buka pakai pemanasan kayak &ldquo;Halo guys, jadi gini, gue mau cerita dikit...&rdquo; &mdash; langsung tusuk. Kalau kalimat pertamamu butuh kalimat kedua buat jadi menarik, berarti kalimat pertamamu gagal.</p>
+
+      <p><strong>Bahasa manusia, bukan bahasa brosur.</strong> Bandingin:</p>
+      <blockquote>Salah: &ldquo;Dengan bangga kami mempersembahkan produk berkualitas premium dengan harga terjangkau.&rdquo;<br>Benar: &ldquo;Kabel 30 ribuan ini ngecas HP gue lebih cepet dari charger bawaan.&rdquo;</blockquote>
+      <p>Yang pertama bunyi kayak spanduk. Yang kedua bunyi kayak temen cerita. Orang berhenti buat temen, bukan buat spanduk.</p>
+
+      <p><strong>Janji di hook harus dibayar di isi.</strong> Ini aturan paling penting. Sekali orang ngerasa ditipu hook-mu, mereka nggak akan percaya hook-mu yang berikutnya. Kepercayaan itu modal paling mahal.</p>
+      <blockquote>Zonk: &ldquo;GUE KAYA DALAM SEMALAM!!!&rdquo; &mdash; isinya cuma cerita mimpi.<br>Benar: &ldquo;Gue dapet 200 ribu dari barang bekas kosan &mdash; caranya gini.&rdquo; &mdash; isinya beneran langkah jual barang bekas.</blockquote>
+
+      <h2>3 kesalahan hook yang paling sering kejadian</h2>
+      <p>Sebelum ke bagian jualan, gue mau tunjukin tiga kesalahan yang paling sering gue liat &mdash; karena ngindarin kesalahan itu setengah jalan menuju hook yang bagus.</p>
+
+      <p><strong>1. Ngebuka pakai basa-basi.</strong> Pembuka kayak gini buang-buang 3 detik emasmu:</p>
+      <blockquote>Salah: &ldquo;Halo semuanya, selamat pagi! Jadi gini, gue mau sedikit cerita tentang pengalaman gue kemarin...&rdquo; &mdash; 20 kata, nol informasi.<br>Benar: &ldquo;Kemarin gue hampir ketipu 2 juta.&rdquo; &mdash; 6 kata, langsung nempel.</blockquote>
+
+      <p><strong>2. Ngejanjiin yang nggak dibayar.</strong> Ini versi parahnya clickbait zonk: hook yang isinya nggak nyambung sama sekali sama janjinya. Sekali-dua kali mungkin dapet klik, tapi abis itu akunmu dicap tukang tipu. Di Threads, reputasi akun itu segalanya &mdash; sekali orang males nge-tap &ldquo;selengkapnya&rdquo; di postinganmu, susah balikinnya.</p>
+
+      <p><strong>3. Terlalu umum sampe nggak nyentuh siapa-siapa.</strong></p>
+      <blockquote>Salah: &ldquo;Tips hidup bahagia untuk semua orang.&rdquo; &mdash; siapa yang merasa dituju? Nggak ada.<br>Benar: &ldquo;Buat lu yang tiap malam overthinking sampe jam 2 pagi, baca ini.&rdquo; &mdash; spesifik itu personal, dan yang personal bikin orang berhenti scroll.</blockquote>
+      <p>Pola umumnya: hook yang gagal itu hook yang nggak berani spesifik. Spesifik itu berani &mdash; berani nyebut angka, berani nyebut rasa sakit, berani nyebut audiensnya siapa. Yang umum memang aman, tapi yang aman nggak dilirik.</p>
+
+      <hr class="divider">
+
+      <h2>Hook jualan yang nggak berasa jualan</h2>
+      <p>Buat RacunKit dan affiliate, tantangannya beda: orang alergi sama yang bau jualan. Begitu kalimat pertamamu bunyi kayak iklan, mereka kabur. Triknya: <mark>jual transformasi, bukan produk.</mark> Orang nggak beli kabel data &mdash; mereka beli rasa tenang karena baterai nggak sekarat pas lagi di jalan.</p>
+      <p>Rumus sederhananya: masalah yang relatable + hasil yang konkret + harga yang disebut. Contoh:</p>
+      <ul>
+        <li>Produk lampu tidur &rarr; &ldquo;Kamar kos gue yang tadinya kayak gudang sekarang berasa kafe. Modalnya satu lampu 40 ribuan.&rdquo;</li>
+        <li>Produk botol minum &rarr; &ldquo;Sejak punya botol ini gue berhenti beli air mineral. Ngiritnya kerasa banget tiap akhir bulan.&rdquo;</li>
+        <li>Produk kabel data &rarr; &ldquo;HP gue ngecas 0&ndash;80 cuma sambil mandi. Kabelnya 30 ribuan, charger bawaan gue pensiun.&rdquo;</li>
+      </ul>
+      <p>Bandingin sama bahasa yang bikin orang scroll lewat: &ldquo;PROMO!!! DISKON 50%!!! BELI SEKARANG!!!&rdquo; Huruf kapital dan tanda seru nggak bikin orang beli. Cerita yang bikin orang beli.</p>
+
+      <h2>Latihan: tulis ulang 3 kalimat membosankan ini</h2>
+      <p>Teori tanpa latihan = nol. Coba tulis ulang tiga kalimat di bawah pakai formula apa aja yang udah dipelajari. Gue kasih contoh jawaban &mdash; tapi coba dulu sendiri sebelum ngintip.</p>
+
+      <p><strong>1.</strong></p>
+      <blockquote>&ldquo;Hari ini saya ingin membagikan tips menghemat uang.&rdquo;</blockquote>
+      <p><strong>Contoh jawaban:</strong> &ldquo;Gue ngirit 500 ribu sebulan tanpa berhenti jajan. Caranya gampang banget.&rdquo;</p>
+
+      <p><strong>2.</strong></p>
+      <blockquote>&ldquo;Produk ini sangat bagus dan berkualitas.&rdquo;</blockquote>
+      <p><strong>Contoh jawaban:</strong> &ldquo;Udah 6 bulan gue pake tiap hari, nggak ada lecet sama sekali.&rdquo;</p>
+
+      <p><strong>3.</strong></p>
+      <blockquote>&ldquo;Jangan lupa follow akun ini untuk info menarik.&rdquo;</blockquote>
+      <p><strong>Contoh jawaban:</strong> &ldquo;Follow akun ini kalau lu juga tim &lsquo;gajian numpang lewat&rsquo;.&rdquo;</p>
+
+      <h2>Checklist 5 detik sebelum posting</h2>
+      <p>Sebelum pencet posting, baca ulang kalimat pertamamu dan jawab lima ini. Kalau ada satu aja yang &ldquo;nggak&rdquo;, benerin dulu &mdash; cuma butuh 5 detik:</p>
+      <ul>
+        <li>Apakah 5 kata pertamanya bikin orang penasaran atau merasa ketusuk?</li>
+        <li>Ini bahasa ngobrol, bukan bahasa brosur?</li>
+        <li>Janji di hook dibayar lunas di isi?</li>
+        <li>Cuma ada SATU ide di kalimat pembuka?</li>
+        <li>Kalau gue yang lagi scroll, gue berhenti nggak?</li>
+      </ul>
+
+      <p>Hook itu skill, bukan bakat. Nggak ada orang yang lahir langsung jago bikin kalimat pembuka. Caranya cuma satu: latihan tiap hari. Mulai dari yang paling gampang &mdash; tiap mau posting apa pun, tulis dulu versi membosankannya, terus tulis ulang pakai satu formula di atas. Sebulan, dijamin kerasa bedanya.</p>
+
+      <p class="byline">&mdash;<span>Vesper</span></p>
+    </article>
+  </main>
+</body>
+</html>
